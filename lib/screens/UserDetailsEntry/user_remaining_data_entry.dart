@@ -2,15 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:dear_canary/models/user_details.dart';
 import 'package:dear_canary/screens/home.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RemainingDataEntry extends StatefulWidget {
-  const RemainingDataEntry({Key? key}) : super(key: key);
+  var mobile;
+  var result;
+  RemainingDataEntry(String mobile, int result, {Key? key}) : super(key: key);
 
   @override
-  _RemainingDataEntryState createState() => _RemainingDataEntryState();
+  _RemainingDataEntryState createState() => _RemainingDataEntryState(mobile, result);
 }
 
 class _RemainingDataEntryState extends State<RemainingDataEntry> {
+  _RemainingDataEntryState(this.mobile,this.result);
+  late String mobile;
+  late String result;
 
   final _userCountryController = TextEditingController();
   final _userStateController = TextEditingController();
@@ -46,6 +52,24 @@ class _RemainingDataEntryState extends State<RemainingDataEntry> {
         );
       },
     );
+  }
+
+  Future<void> datatoFire() async {
+    try {
+      // Get reference to Firestore collection
+      var docRef =
+      FirebaseFirestore.instance.collection('Dear Canary').doc(mobile);
+      docRef.update({
+        "Single Mother": _userSingleMother,
+        "Country": _userCountryController.text,
+        "State": _userStateController.text,
+        "PinCode": _userPinCodeController.text,
+        "Job": _userJobController.text,
+        "Result":result,
+      });
+    } catch (e) {
+      rethrow;
+    }
   }
 
   @override

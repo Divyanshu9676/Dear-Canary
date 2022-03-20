@@ -53,7 +53,7 @@ class _MobileAuthState extends State<MobileAuth> {
 
       if (authCredential.user != null) {
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const BasicDataEntry()));
+            MaterialPageRoute(builder: (context) => BasicDataEntry(_mobileController.text)));
       }
     } on FirebaseAuthException catch (e) {
       setState(() {

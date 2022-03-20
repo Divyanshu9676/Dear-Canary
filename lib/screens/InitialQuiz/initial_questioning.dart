@@ -4,14 +4,16 @@ import 'package:dear_canary/screens/InitialQuiz/quiz.dart';
 import 'package:dear_canary/screens/InitialQuiz/result.dart';
 
 class InitialQuestions extends StatefulWidget {
-  const InitialQuestions({Key? key}) : super(key: key);
+  final String mobile;
+  const InitialQuestions({Key? key, required this.mobile}) : super(key: key);
 
   @override
-  _InitialQuestionsState createState() => _InitialQuestionsState();
+  _InitialQuestionsState createState() => _InitialQuestionsState(mobile);
 }
 
 class _InitialQuestionsState extends State<InitialQuestions> {
-
+  _InitialQuestionsState(this.mobile);
+  late String mobile;
   final _initialQuestions = [
     {
       'question': 'How often do you laugh and see the funny sides of things?',
@@ -161,7 +163,7 @@ class _InitialQuestionsState extends State<InitialQuestions> {
                 questionIndex: _questionIndex,
                 questions: _initialQuestions,
               ) //Quiz
-                  : Result(_totalScore, _resetQuiz),
+                  : Result(_totalScore, _resetQuiz,mobile),
             ),
           ],
         ), //Padding

@@ -3,7 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:dear_canary/screens/InitialQuiz/initial_questioning.dart';
 
 class IntroToInitialQuiz extends StatelessWidget {
-  const IntroToInitialQuiz({Key? key}) : super(key: key);
+  final String mobile;
+  const IntroToInitialQuiz(this.mobile);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class IntroToInitialQuiz extends StatelessWidget {
               onTap: (){
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const InitialQuestions())
+                    MaterialPageRoute(builder: (context) => InitialQuestions(mobile: mobile,))
                 );
               },
               child: const FaIcon(
