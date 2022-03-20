@@ -9,7 +9,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/triipaathii/dC target="_blank"">
+  <a href="https://github.com/MitAbhay/dearCanary target="_blank"">
     <img src="assets/images/logo2.png" alt="Logo" width="120" height="120">
   </a>
 
@@ -18,18 +18,16 @@
   <p align="center">
     An Application for solving the problem of Postmartum Depression.
     <br />
-    This is a Submission Project for Hackathon : 
-    <a href="https://electrothon.specnith.com/ target="_blank"">Electrothon 4.0</a>
+    This is a Submission Project for :  
+    <a href="https://developers.google.com/community/gdsc-solution-challenge/ target="_blank"">Google Solution Challange</a>
     <br />
     <br />
-    <a href="https://drive.google.com/file/d/1zbN4qylBrzryQmhiNH4WLDuymoOklK8O/view?usp=sharing target="_blank""><strong>Download the App</strong></a>
-    <br />
-    <a href="https://www.youtube.com/watch?v=148lrMrd9o4&t=119s target="_blank""><strong>Project Vidio on Youtube</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/triipaathii/dC/issues target="_blank"">Report Bug</a>
+    <!-- <a href="https://drive.google.com/file/d/1zbN4qylBrzryQmhiNH4WLDuymoOklK8O/view?usp=sharing target="_blank""><strong>Download the App</strong></a> -->
+    <!-- <br />
+    <a href="https://www.youtube.com/watch?v=148lrMrd9o4&t=119s target="_blank""><strong>Project Vidio on Youtube</strong></a> -->
+    <a href="https://github.com/MitAbhay/dearCanary  target="_blank"">Report Bug</a>
     ·
-    <a href="https://github.com/triipaathii/dC/issues target="_blank"">Request Feature</a>
+    <a href="https://github.com/MitAbhay/dearCanary  target="_blank"">Request Feature</a>
   </p>
 </div>
 
@@ -107,9 +105,7 @@ In the initial days, postpartum depression may seem like the normal baby blues. 
 We have used the following tech for this Application :
 
 - [Flutter](https://flutter.com/)
-- [Alan AI](https://alan.app/)
-- [Twilio](https://www.twilio.com/)
-- [CockroachDB](https://www.cockroachlabs.com/)
+- [Firebase](https://firebase.com)
 - [Android Studio](https://developer.android.com/)
 - [Photoshop](https://www.adobe.com/in/products/photoshop.html)
 
@@ -155,7 +151,7 @@ Follow the following points to run this in your system
 
 ## Our Vision
 
-We live in a world where half the population is female, and every female experiences the bliss of motherhood at some point in their life. The Postpartum Depression target rate is increasing with the increasing population. Nowadays, the global prevalence of PPD is 100-150 per 1000 births. PPD can be very toll taking on the health of a woman. We, at Little Sparrow, want to create a world where women can come up and break free of PPD. We want to live in a world where the masses know what Postpartum Depression is, and no one goes neglected. We want to create awareness among the crowd so that people can help new mothers in their struggles. The women community is progressing but somehow new mothers somewhere get neglected. Not being able to express their suffering hidden under joy can be a threat to their mental health. Little Sparrow wants to work for this cause believing that any type of mental health is a menace to everyone.
+We live in a world where half the population is female, and every female experiences the bliss of motherhood at some point in their life. The Postpartum Depression target rate is increasing with the increasing population. Nowadays, the global prevalence of PPD is 100-150 per 1000 births. PPD can be very toll taking on the health of a woman. We, at dear Canary, want to create a world where women can come up and break free of PPD. We want to live in a world where the masses know what Postpartum Depression is, and no one goes neglected. We want to create awareness among the crowd so that people can help new mothers in their struggles. The women community is progressing but somehow new mothers somewhere get neglected. Not being able to express their suffering hidden under joy can be a threat to their mental health. dear Canary wants to work for this cause believing that any type of mental health is a menace to everyone.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -187,35 +183,25 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Our Team
 
-- Aastha Berry - [LinkedIn](https://www.linkedin.com/in/aastha-berry-582160203/)
 - Abhay Kumar Mittal - [LinkedIn](https://www.linkedin.com/in/mitabhay/)
 - Anurag Tripathi - [LinkedIn](https://www.linkedin.com/in/anurag-tripathi-7422291b4/)
-- Stuti Srivastava - [LinkedIn](https://www.linkedin.com/in/stuti-srivastava-149192203/)
+- Divyanshu - [LinkedIn]()
 
 <!-- Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name) -->
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<!-- <p align="right">(<a href="#top">back to top</a>)</p> -->
 
 <!-- ACKNOWLEDGMENTS -->
 <!-- ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
-
-<p align="right">(<a href="#top">back to top</a>)</p> -->
+Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off
+-->
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
+<!-- [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
 [contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
 [forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
@@ -227,4 +213,4 @@ Use this space to list resources you find helpful and would like to give credit 
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: assets/images/screenshot.jpg
+[product-screenshot]: assets/images/screenshot.jpg -->
