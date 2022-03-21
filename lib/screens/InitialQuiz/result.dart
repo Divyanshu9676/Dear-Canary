@@ -76,7 +76,7 @@ class Result extends StatelessWidget {
 
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => RemainingDataEntry(mobile,resultScore))
+                    MaterialPageRoute(builder: (context) => RemainingDataEntry(mobile: mobile,result: resultScore))
                 );
               },
               child: const FaIcon(

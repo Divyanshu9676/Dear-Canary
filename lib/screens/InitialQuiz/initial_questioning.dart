@@ -4,8 +4,8 @@ import 'package:dear_canary/screens/InitialQuiz/quiz.dart';
 import 'package:dear_canary/screens/InitialQuiz/result.dart';
 
 class InitialQuestions extends StatefulWidget {
-  final String mobile;
-  const InitialQuestions({Key? key, required this.mobile}) : super(key: key);
+  var mobile;
+  InitialQuestions({Key? key,@required this.mobile}) : super(key: key);
 
   @override
   _InitialQuestionsState createState() => _InitialQuestionsState(mobile);

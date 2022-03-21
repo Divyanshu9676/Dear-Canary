@@ -88,7 +88,7 @@ class Result extends StatelessWidget {
 
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => HomePage(mobile))
+                    MaterialPageRoute(builder: (context) => HomePage(value: mobile))
                 );
               },
               child: const FaIcon(

@@ -14,11 +14,11 @@ import 'package:dear_canary/screens/Notifications/notifications.dart';
 import 'package:dear_canary/screens/Settings/settings.dart';
 
 class HomePage extends StatefulWidget {
-  var mobile;
-  HomePage(String mobile, {Key? key}) : super(key: key);
+  var value;
+  HomePage({Key? key, @required this.value}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState(mobile);
+  State<HomePage> createState() => _HomePageState(value);
 }
 
 class _HomePageState extends State<HomePage> {
@@ -292,7 +292,7 @@ class _HomePageState extends State<HomePage> {
                                 onTap: (){
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => Profile(mobile))
+                                      MaterialPageRoute(builder: (context) => Profile(value: mobile))
                                   );
                                 },
                                 borderRadius: BorderRadius.circular(20),
@@ -334,7 +334,7 @@ class _HomePageState extends State<HomePage> {
                                 onTap: (){
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => IntroToDailyQuiz(mobile))
+                                      MaterialPageRoute(builder: (context) => IntroToDailyQuiz(mobile: mobile))
                                   );
                                 },
                                 borderRadius: BorderRadius.circular(20),

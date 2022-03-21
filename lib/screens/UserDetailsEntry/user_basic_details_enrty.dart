@@ -7,12 +7,12 @@ import 'package:dear_canary/screens/intro_page_1.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class BasicDataEntry extends StatefulWidget {
-  var mobile;
+  var value;
 
-  BasicDataEntry(String mobile, {Key? key}) : super(key: key);
+  BasicDataEntry({Key? key, @required this.value}) : super(key: key);
 
   @override
-  State<BasicDataEntry> createState() => _BasicDataEntryState(mobile);
+  State<BasicDataEntry> createState() => _BasicDataEntryState(value);
 }
 
 class _BasicDataEntryState extends State<BasicDataEntry> {
@@ -67,14 +67,14 @@ class _BasicDataEntryState extends State<BasicDataEntry> {
       // Get reference to Firestore collection
       var docRef =
           FirebaseFirestore.instance.collection('Dear Canary').doc(mobile);
-      docRef.update({
+      docRef.set({
         "Name": _userNameController.text,
         "Child Number": _userChildNoController.text,
         "DOB": _userDOBController.text,
         "Currently Pregnant": _userCurrentlyPregnant,
         "Time": currentDate,
-        "Delivery Time": _userDeliveryDate!,
-      });
+        "Delivery Time": _userDeliveryDate,
+      }, SetOptions(merge: true));
     } catch (e) {
       rethrow;
     }

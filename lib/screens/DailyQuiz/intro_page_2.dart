@@ -6,7 +6,7 @@ import 'package:dear_canary/screens/InitialQuiz/initial_questioning.dart';
 
 class IntroToDailyQuiz extends StatefulWidget {
   var mobile;
-  IntroToDailyQuiz(String mobile,{Key? key}) : super(key: key);
+  IntroToDailyQuiz({Key? key,@required this.mobile}) : super(key: key);
 
   @override
   State<IntroToDailyQuiz> createState() => _IntroToDailyQuizState(mobile);

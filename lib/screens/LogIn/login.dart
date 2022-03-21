@@ -53,7 +53,7 @@ class _MobileAuthState extends State<MobileAuth> {
 
       if (authCredential.user != null) {
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => BasicDataEntry(_mobileController.text)));
+            MaterialPageRoute(builder: (context) => BasicDataEntry(value: _mobileController.text)));
       }
     } on FirebaseAuthException catch (e) {
       setState(() {
@@ -103,7 +103,7 @@ class _MobileAuthState extends State<MobileAuth> {
     // Function to send OTP
     void _sendOTP() async {
       await _auth.verifyPhoneNumber(
-          phoneNumber: _mobileController.text,
+          phoneNumber: "+91"+_mobileController.text,
           verificationCompleted: (phoneAuthCredential) async {
             setState(() {
               showLoading = false;
@@ -212,7 +212,7 @@ class _MobileAuthState extends State<MobileAuth> {
                               style: TextButton.styleFrom(
                                   backgroundColor: const Color(0xff084d52)),
                               onPressed: () async {
-                                if (_mobileController.text.isEmpty) {
+                                  if (_mobileController.text.isEmpty) {
                                   _showMyDialog("Enter your mobile number");
                                 } else {
                                   setState(() {

@@ -7,7 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class RemainingDataEntry extends StatefulWidget {
   var mobile;
   var result;
-  RemainingDataEntry(String mobile, int result, {Key? key}) : super(key: key);
+  RemainingDataEntry({Key? key, @required this.mobile, @required this.result}) : super(key: key);
 
   @override
   _RemainingDataEntryState createState() => _RemainingDataEntryState(mobile, result);
@@ -16,7 +16,7 @@ class RemainingDataEntry extends StatefulWidget {
 class _RemainingDataEntryState extends State<RemainingDataEntry> {
   _RemainingDataEntryState(this.mobile,this.result);
   late String mobile;
-  late String result;
+  late int result;
 
   final _userCountryController = TextEditingController();
   final _userStateController = TextEditingController();
@@ -54,7 +54,7 @@ class _RemainingDataEntryState extends State<RemainingDataEntry> {
     );
   }
 
-  Future<void> datatoFire() async {
+  Future<void> dataToFire() async {
     try {
       // Get reference to Firestore collection
       var docRef =
@@ -343,7 +343,7 @@ class _RemainingDataEntryState extends State<RemainingDataEntry> {
                   //Proceed Button
                   ElevatedButton(
                       onPressed: (){
-
+                        dataToFire();
                         if (_userCountryController.text.isEmpty){
                           _showMyDialog();
                         } else if (_userStateController.text.isEmpty){
@@ -357,7 +357,7 @@ class _RemainingDataEntryState extends State<RemainingDataEntry> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => HomePage(mobile)
+                                  builder: (context) => HomePage(value: mobile)
                               )
                           );
 

@@ -3,11 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Profile extends StatefulWidget {
-  var mobile;
-  Profile(String mobile, {Key? key}) : super(key: key);
+  var value;
+  Profile({Key? key, @required this.value}) : super(key: key);
 
   @override
-  _ProfileState createState() => _ProfileState(mobile);
+  _ProfileState createState() => _ProfileState(value);
 }
 
 class _ProfileState extends State<Profile> {
@@ -17,6 +17,7 @@ class _ProfileState extends State<Profile> {
   Future getUserList(String docId) async {
     List itemList = [];
     try {
+      print("heree");
       await FirebaseFirestore.instance
           .collection('Dear Canary').doc(mobile)
           .get()
@@ -25,6 +26,8 @@ class _ProfileState extends State<Profile> {
           itemList.add(element.data());
         }
       });
+      print("itemList");
+      print(itemList);
       return itemList;
     } catch (e) {
       throw(e.toString());
@@ -83,14 +86,14 @@ class _ProfileState extends State<Profile> {
                 ),
               ),
             ),
-          Text(
-            user[0]["Name"],
-            style: const TextStyle(
-                fontFamily: "Lemon Milk",
-                fontWeight: FontWeight.bold,
-                fontSize: 25
-            ),
-          ),
+          // Text(
+          //   user[0]["Name"],
+          //   style: const TextStyle(
+          //       fontFamily: "Lemon Milk",
+          //       fontWeight: FontWeight.bold,
+          //       fontSize: 25
+          //   ),
+          // ),
             Positioned(
               top: mediaQueryHeight * 0.08,
               left: mediaQueryWidth * 0.08,
