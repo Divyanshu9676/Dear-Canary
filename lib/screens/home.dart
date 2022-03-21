@@ -14,13 +14,16 @@ import 'package:dear_canary/screens/Notifications/notifications.dart';
 import 'package:dear_canary/screens/Settings/settings.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  var mobile;
+  HomePage(String mobile, {Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState(mobile);
 }
 
 class _HomePageState extends State<HomePage> {
+  _HomePageState(this.mobile);
+  late String mobile;
   @override
   Widget build(BuildContext context) {
 
@@ -289,7 +292,7 @@ class _HomePageState extends State<HomePage> {
                                 onTap: (){
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => const Profile())
+                                      MaterialPageRoute(builder: (context) => Profile(mobile))
                                   );
                                 },
                                 borderRadius: BorderRadius.circular(20),
@@ -331,7 +334,7 @@ class _HomePageState extends State<HomePage> {
                                 onTap: (){
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => const IntroToDailyQuiz())
+                                      MaterialPageRoute(builder: (context) => IntroToDailyQuiz(mobile))
                                   );
                                 },
                                 borderRadius: BorderRadius.circular(20),

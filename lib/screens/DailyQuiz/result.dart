@@ -9,8 +9,9 @@ import 'package:dear_canary/screens/UserDetailsEntry/user_remaining_data_entry.d
 class Result extends StatelessWidget {
   final int resultScore;
   final VoidCallback resetHandler;
+  final String mobile;
 
-  Result(this.resultScore, this.resetHandler);
+  Result(this.resultScore, this.resetHandler, this.mobile);
 
   //Remark Logic
   String get resultPhrase {
@@ -87,7 +88,7 @@ class Result extends StatelessWidget {
 
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomePage())
+                    MaterialPageRoute(builder: (context) => HomePage(mobile))
                 );
               },
               child: const FaIcon(

@@ -62,7 +62,7 @@ class _BasicDataEntryState extends State<BasicDataEntry> {
     }
   }
 
-  Future<void> datatoFire() async {
+  Future<void> dataToFire() async {
     try {
       // Get reference to Firestore collection
       var docRef =
@@ -277,18 +277,16 @@ class _BasicDataEntryState extends State<BasicDataEntry> {
                                         fontSize: 20),
                                   ),
                                 ),
-                                Container(
-                                  child: Text(
-                                    _userDeliveryDate == null
-                                        ? "                          "
-                                        : DateFormat('dd-MM-yyyy')
-                                            .format(_userDeliveryDate!)
-                                            .toString(),
-                                    style: const TextStyle(
-                                        fontFamily: "Poppins",
-                                        fontSize: 20,
-                                        decoration: TextDecoration.underline),
-                                  ),
+                                Text(
+                                  _userDeliveryDate == null
+                                      ? "                          "
+                                      : DateFormat('dd-MM-yyyy')
+                                          .format(_userDeliveryDate!)
+                                          .toString(),
+                                  style: const TextStyle(
+                                      fontFamily: "Poppins",
+                                      fontSize: 20,
+                                      decoration: TextDecoration.underline),
                                 ),
                                 Padding(
                                   child: InkWell(
@@ -372,7 +370,7 @@ class _BasicDataEntryState extends State<BasicDataEntry> {
                                   int.parse(_userChildNoController.text));
                             }
 
-                            datatoFire();
+                            dataToFire();
 
                             Navigator.push(
                                 context,

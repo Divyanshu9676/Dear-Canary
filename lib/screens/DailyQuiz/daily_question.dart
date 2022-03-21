@@ -4,13 +4,16 @@ import 'package:dear_canary/screens/DailyQuiz/quiz.dart';
 import 'package:dear_canary/screens/DailyQuiz/result.dart';
 
 class DailyQuestions extends StatefulWidget {
-  const DailyQuestions({Key? key}) : super(key: key);
+  var mobile;
+  DailyQuestions(String mobile, {Key? key}) : super(key: key);
 
   @override
-  _DailyQuestionsState createState() => _DailyQuestionsState();
+  _DailyQuestionsState createState() => _DailyQuestionsState(mobile);
 }
 
 class _DailyQuestionsState extends State<DailyQuestions> {
+  _DailyQuestionsState(this.mobile);
+  late String mobile;
 
   final _initialQuestions = [
     {
@@ -141,7 +144,7 @@ class _DailyQuestionsState extends State<DailyQuestions> {
                 questionIndex: _questionIndex,
                 questions: _initialQuestions,
               ) //Quiz
-                  : Result(_totalScore, _resetQuiz),
+                  : Result(_totalScore, _resetQuiz, mobile),
             ),
           ],
         ), //Padding

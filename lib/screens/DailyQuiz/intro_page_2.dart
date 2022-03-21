@@ -5,13 +5,17 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:dear_canary/screens/InitialQuiz/initial_questioning.dart';
 
 class IntroToDailyQuiz extends StatefulWidget {
-  const IntroToDailyQuiz({Key? key}) : super(key: key);
+  var mobile;
+  IntroToDailyQuiz(String mobile,{Key? key}) : super(key: key);
 
   @override
-  State<IntroToDailyQuiz> createState() => _IntroToDailyQuizState();
+  State<IntroToDailyQuiz> createState() => _IntroToDailyQuizState(mobile);
 }
 
 class _IntroToDailyQuizState extends State<IntroToDailyQuiz> {
+  _IntroToDailyQuizState(this.mobile);
+  late String mobile;
+
   @override
   Widget build(BuildContext context) {
 
@@ -44,7 +48,7 @@ class _IntroToDailyQuizState extends State<IntroToDailyQuiz> {
               onTap: (){
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const DailyQuestions())
+                    MaterialPageRoute(builder: (context) => DailyQuestions(mobile))
                 );
               },
               child: const FaIcon(
