@@ -37,9 +37,7 @@ class _HomePageState extends State<HomePage> {
     );
 
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
         backgroundColor: const Color(0xfff27aa8),
         body: SafeArea(
           child: Stack(
@@ -470,7 +468,6 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }

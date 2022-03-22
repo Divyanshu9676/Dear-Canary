@@ -143,8 +143,7 @@ class _InitialQuestionsState extends State<InitialQuestions> {
         )
     );
 
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         backgroundColor: const Color(0xfff5eae4),
         body: Stack(
           children: <Widget>[
@@ -167,8 +166,6 @@ class _InitialQuestionsState extends State<InitialQuestions> {
             ),
           ],
         ), //Padding
-      ), //Scaffold
-      debugShowCheckedModeBanner: false,
-    );
+      );
   }
 }

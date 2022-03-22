@@ -17,17 +17,14 @@ class _ProfileState extends State<Profile> {
   Future getUserList(String docId) async {
     List itemList = [];
     try {
-      print("heree");
       await FirebaseFirestore.instance
           .collection('Dear Canary').doc(mobile)
           .get()
           .then((querySnapshot) {
-        for (var element in querySnapshot.get(mobile)) {
-          itemList.add(element.data());
-        }
+        // for (var element in querySnapshot.get(mobile)) {
+        itemList.add(querySnapshot.data());
+        // }
       });
-      print("itemList");
-      print(itemList);
       return itemList;
     } catch (e) {
       throw(e.toString());
@@ -35,6 +32,7 @@ class _ProfileState extends State<Profile> {
   }
 
   List user = [];
+  String name="";
 
   @override
   void initState() {
@@ -49,6 +47,7 @@ class _ProfileState extends State<Profile> {
     } else {
       setState(() {
         user = result;
+        name=user[0]["Name"].toString();
       });
     }
   }
@@ -86,14 +85,6 @@ class _ProfileState extends State<Profile> {
                 ),
               ),
             ),
-          // Text(
-          //   user[0]["Name"],
-          //   style: const TextStyle(
-          //       fontFamily: "Lemon Milk",
-          //       fontWeight: FontWeight.bold,
-          //       fontSize: 25
-          //   ),
-          // ),
             Positioned(
               top: mediaQueryHeight * 0.08,
               left: mediaQueryWidth * 0.08,
@@ -109,7 +100,15 @@ class _ProfileState extends State<Profile> {
                 "assets/images/woman_sitting.png",
                 height: 150,
               ),
-            )
+            ),
+          Text(
+            name,
+            style: const TextStyle(
+                fontFamily: "Lemon Milk",
+                fontWeight: FontWeight.bold,
+                fontSize: 40
+            ),
+          ),
         ],
       ),
     );
