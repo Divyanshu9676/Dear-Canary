@@ -1,3 +1,4 @@
+import 'package:dear_canary/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -26,9 +27,9 @@ class MyApp extends StatelessWidget {
       //set brightness for icons, like dark background light icons
     ));
 
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MobileAuth(),
+      home: HomePage(value: "hello"),
     );
   }
 }

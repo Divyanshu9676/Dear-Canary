@@ -132,66 +132,6 @@ class _AboutUsState extends State<AboutUs> {
                 ),
                 const SizedBox(height: 20,),
 
-                // Aastha Beri
-                Center(
-                  child: Column(
-                      children: <Widget>[
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Image.asset(
-                              "assets/images/aastha.jpg"
-                          ),
-                        ),
-                        const SizedBox(height: 5,),
-                        const Text(
-                          "Aastha Berry",
-                          style: TextStyle(
-                            fontFamily: "Poppins",
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold
-                          ),
-                        ),
-                        const SizedBox(height: 5,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            InkWell(
-                              onTap:  () async {
-                                const url = 'https://www.instagram.com/aastha_beri/';
-                                if(await canLaunch(url)){
-                                  await launch(url);
-                                } else {
-                                  throw 'Could not launch $url';
-                                }
-                              },
-                              child: Image.asset(
-                                "assets/images/instagram.png",
-                                height: 40,
-                              ),
-                            ),
-                            const SizedBox(width: 20,),
-                            InkWell(
-                              onTap:  () async {
-                                const url = 'https://www.linkedin.com/in/aastha-berry-582160203/';
-                                if(await canLaunch(url)){
-                                  await launch(url);
-                                } else {
-                                  throw 'Could not launch $url';
-                                }
-                              },
-                              child: Image.asset(
-                                "assets/images/linkedin.png",
-                                height: 40,
-                              ),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                const SizedBox(height: 20,),
-                const Divider(),
-
                 // Abhay K. Mittal
                 Center(
                   child: Column(
@@ -312,19 +252,19 @@ class _AboutUsState extends State<AboutUs> {
                 const SizedBox(height: 20,),
                 const Divider(),
 
-                // Stuti Srivastava
+                // Divyanshu Singh
                 Center(
                   child: Column(
                     children: <Widget>[
                       ClipRRect(
                         borderRadius: BorderRadius.circular(15),
                         child: Image.asset(
-                            "assets/images/stuti.jpg"
+                            "assets/images/divyanshu.jpeg"
                         ),
                       ),
                       const SizedBox(height: 5,),
                       const Text(
-                        "Stuti Srivastava",
+                        "Divyanshu Singh",
                         style: TextStyle(
                             fontFamily: "Poppins",
                             fontSize: 20,
@@ -337,7 +277,7 @@ class _AboutUsState extends State<AboutUs> {
                         children: <Widget>[
                           InkWell(
                             onTap:  () async {
-                              const url = 'https://www.instagram.com/stuti__srivastava_/';
+                              const url = 'https://www.instagram.com/divyu50/';
                               if(await canLaunch(url)){
                                 await launch(url);
                               } else {
@@ -352,7 +292,7 @@ class _AboutUsState extends State<AboutUs> {
                           const SizedBox(width: 20,),
                           InkWell(
                             onTap:  () async {
-                              const url = 'https://www.linkedin.com/in/stuti-srivastava-149192203/';
+                              const url = 'https://www.linkedin.com/in/divyanshu9676/';
                               if(await canLaunch(url)){
                                 await launch(url);
                               } else {
