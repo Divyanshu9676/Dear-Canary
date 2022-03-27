@@ -185,7 +185,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 - Abhay Kumar Mittal - [LinkedIn](https://www.linkedin.com/in/mitabhay/)
 - Anurag Tripathi - [LinkedIn](https://www.linkedin.com/in/anurag-tripathi-7422291b4/)
-- Divyanshu - [LinkedIn]()
+- Divyanshu - [LinkedIn](https://www.linkedin.com/in/divyanshu9676/)
 
 <!-- Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name) -->
 
