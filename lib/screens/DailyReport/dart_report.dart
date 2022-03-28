@@ -11,6 +11,43 @@ class DailyReport extends StatefulWidget {
 class _DailyReportState extends State<DailyReport> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+
+    SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(
+          statusBarColor: Color(0xffca9dff),
+          statusBarIconBrightness: Brightness.light,
+        )
+    );
+
+    return SafeArea(
+        child: Scaffold(
+          backgroundColor: const Color(0xffca9dff),
+          body: Stack(
+            children: <Widget>[
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Image.asset(
+                  "assets/gif/girl_10.gif",
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            "Daily Task"
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+        )
+    );
   }
 }

@@ -94,7 +94,7 @@ class _ProfileState extends State<Profile> {
               ),
             ),
             Positioned(
-              top: mediaQueryHeight * 0.065,
+              top: mediaQueryHeight * 0.07,
               right: mediaQueryWidth * 0.035,
               child: Image.asset(
                 "assets/images/woman_sitting.png",
@@ -102,7 +102,7 @@ class _ProfileState extends State<Profile> {
               ),
             ),
           Text(
-            name,
+            "Hello",
             style: const TextStyle(
                 fontFamily: "Lemon Milk",
                 fontWeight: FontWeight.bold,
