@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Community extends StatefulWidget {
@@ -10,45 +11,127 @@ class Community extends StatefulWidget {
 }
 
 class _CommunityState extends State<Community> {
+  Future getPosts() async {
+    List itemList = [];
+    try {
+      await FirebaseFirestore.instance
+          .collection("Posts")
+          .orderBy("Time", descending: true)
+          .get()
+          .then((querySnapshot) {
+        for (var ele in querySnapshot.docs) {
+          itemList.add(ele.data());
+        }
+      });
+      return itemList;
+    } catch (e) {
+      throw (e.toString());
+    }
+  }
+
+  List posts = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchDatabaseList();
+  }
+
+  fetchDatabaseList() async {
+    dynamic result1 = await getPosts();
+    if (result1 == null) {
+      throw ("Error");
+    } else {
+      setState(() {
+        posts = result1;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-        const SystemUiOverlayStyle(
-          statusBarColor: Colors.black,
-          //color set to transperent or set your own color
-          statusBarIconBrightness: Brightness.dark,
-          //set brightness for icons, like dark background light icons
-        )
-    );
+    final mediaQueryHeight = MediaQuery.of(context).size.height;
+    final mediaQueryWidth = MediaQuery.of(context).size.width;
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.black,
+      //color set to transparent or set your own color
+      statusBarIconBrightness: Brightness.dark,
+      //set brightness for icons, like dark background light icons
+    ));
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Community",
-          style: TextStyle(
-            fontFamily: "Poppins",
+        appBar: AppBar(
+          title: const Text(
+            "Community",
+            style: TextStyle(
+              fontFamily: "Poppins",
+            ),
+          ),
+          backgroundColor: Colors.black,
+        ),
+        bottomNavigationBar: Container(
+          decoration: const BoxDecoration(
+            // borderRadius: BorderRadius.only(
+            //   topLeft: Radius.circular(18),
+            //   topRight: Radius.circular(18)
+            // ),
+            color: Color(0xFF41C9C6),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                // Device button
+                InkWell(
+                  onTap: () {},
+                  child: Image.asset("assets/images/bell.png",
+                      height: 30, color: const Color(0xFF554E7E)),
+                ),
+
+                // Doctor Button
+                InkWell(
+                  onTap: () {},
+                  child: Image.asset(
+                    "assets/images/bell.png",
+                    height: 30,
+                    color: const Color(0xFF554E7E),
+                  ),
+                ),
+
+                // Setting Button
+                InkWell(
+                  onTap: () {},
+                  child: Image.asset(
+                    "assets/images/bell.png",
+                    height: 30,
+                    color: const Color(0xFF554E7E),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-        backgroundColor: Colors.black,
-      ),
-      body: const SafeArea(
-        child: Center(
-          child: Text(
-              "Will be launched soon..."
-          ),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: const FaIcon(
-          FontAwesomeIcons.home,
-          color: Colors.white,
-        ),
-        backgroundColor: Colors.black,
-        onPressed: () {
-          Navigator.pop(context);
-        },
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-    );
+        body: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              StreamBuilder(builder: (context, snapshot) {
+                return Expanded(
+                    child: ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        itemCount: posts.length,
+                        itemBuilder: (context, index) {
+                          return SingleChildScrollView(
+                              child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: mediaQueryWidth * 0.02,
+                                      vertical: mediaQueryHeight * 0.02),
+                                  child: Card(
+                                      elevation: 0,
+                                      child: Stack(children: <Widget>[]))));
+                        }));
+              })
+            ]));
   }
 }

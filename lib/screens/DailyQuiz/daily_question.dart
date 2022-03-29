@@ -124,8 +124,7 @@ class _DailyQuestionsState extends State<DailyQuestions> {
         )
     );
 
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         backgroundColor: const Color(0xfff1f2f5),
         body: Stack(
           children: <Widget>[
@@ -148,8 +147,6 @@ class _DailyQuestionsState extends State<DailyQuestions> {
             ),
           ],
         ), //Padding
-      ), //Scaffold
-      debugShowCheckedModeBanner: false,
-    );
+      );
   }
 }

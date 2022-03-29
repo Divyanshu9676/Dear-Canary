@@ -35,7 +35,7 @@ class _IntroToDailyQuizState extends State<IntroToDailyQuiz> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             const Text(
-              "Ready for quick test?\nLet's do it...",
+              "Ready for quick test?\nLet's do it... ",
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: "Poppins",
@@ -46,6 +46,7 @@ class _IntroToDailyQuizState extends State<IntroToDailyQuiz> {
             const SizedBox(height: 10,),
             InkWell(
               onTap: (){
+                print(mobile);
                 Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => DailyQuestions(mobile))
