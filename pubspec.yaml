@@ -113,6 +113,9 @@ flutter:
     - assets/images/meet.png
     - assets/images/woman_sitting.png
     - assets/images/test.png
+    - assets/images/meditation.png
+    - assets/images/yoga.png
+    - assets/images/food.png
     - assets/gif/girl_1.gif
     - assets/gif/girl_3.gif
     - assets/gif/girl_10.gif
