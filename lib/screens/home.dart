@@ -36,7 +36,12 @@ class _HomePageState extends State<HomePage> {
     );
 
 
-    return Scaffold(
+    return WillPopScope(
+        onWillPop: () {
+      SystemNavigator.pop();
+      return Future.value(true);
+    },
+    child: Scaffold(
         backgroundColor: const Color(0xfff27aa8),
         body: SafeArea(
           child: Stack(
@@ -331,7 +336,7 @@ class _HomePageState extends State<HomePage> {
                                 onTap: (){
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => DailyReport())
+                                      MaterialPageRoute(builder: (context) => DailyReport(mobile: mobile,))
                                   );
                                 },
                                 borderRadius: BorderRadius.circular(20),
@@ -467,6 +472,6 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-      );
+    ));
   }
 }

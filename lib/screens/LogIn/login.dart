@@ -118,7 +118,7 @@ class _MobileAuthState extends State<MobileAuth> {
     // Function to send OTP
     void _sendOTP() async {
       await _auth.verifyPhoneNumber(
-          phoneNumber: "+91" + _mobileController.text,
+          phoneNumber: _mobileController.text,
           verificationCompleted: (phoneAuthCredential) async {
             setState(() {
               showLoading = false;

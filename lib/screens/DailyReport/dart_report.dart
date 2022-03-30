@@ -123,7 +123,7 @@ class _DailyReportState extends State<DailyReport> {
                               FirebaseFirestore.instance
                                   .collection('Dear Canary')
                                   .doc(mobile)
-                                  .update({"Interest List": taskDone});
+                                  .update({"Task Done": taskDone});
                             },
                             child: Container(
                               margin: EdgeInsets.all(mediaQueryWidth * 0.01),

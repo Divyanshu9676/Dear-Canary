@@ -291,7 +291,7 @@ class _ProfileState extends State<Profile> {
               right: mediaQueryWidth * 0.035,
               child: Image.asset(
                 "assets/images/woman_sitting.png",
-                height: 150,
+                height: mediaQueryHeight * 0.21,
               ),
             ),
 
@@ -359,7 +359,7 @@ class _ProfileState extends State<Profile> {
                                 )
                             ),
                             TextSpan(
-                                text: (user.isNotEmpty ? user[0]['State']+" ,"+ user[0]['Country'] : ''),
+                                text: (user.isNotEmpty ? user[0]['State']+", "+ user[0]['Country'] : ''),
                                 style: const TextStyle(
                                     color: Colors.white,
                                     fontFamily: "Poppins",
@@ -387,12 +387,20 @@ class _ProfileState extends State<Profile> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           const Text(
-                              "Your Progress",
+                              "Your Progress:  ",
                               style: TextStyle(
                                   fontSize: 25,
                                   fontFamily: "Bebas Neue",
                                   color: Colors.white
                               ),
+                          ),
+                          Text(
+                            (user.isNotEmpty ? ((user[0]['Task Done'].length)*33.33).toString()+"%" : ''),
+                            style: const TextStyle(
+                                fontSize: 25,
+                                fontFamily: "Bebas Neue",
+                                color: Colors.white
+                            ),
                           ),
                           IconButton(
                               onPressed: (){
@@ -401,7 +409,7 @@ class _ProfileState extends State<Profile> {
                               icon: Icon(
                                 Icons.info_outlined,
                                 color: Colors.white,
-                                size: mediaQueryHeight * 0.05,
+                                size: mediaQueryHeight * 0.04,
                               )
                           )
                         ],
