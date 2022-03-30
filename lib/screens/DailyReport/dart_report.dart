@@ -32,9 +32,43 @@ class _DailyReportState extends State<DailyReport> {
     }
   ];
 
-  final listOfTaskCondition = [false, false, false];
+  List listOfTaskCondition = [false, false, false];
 
   final taskDone = [];
+
+  Future getUserList() async {
+    List itemList = [];
+    try {
+      await FirebaseFirestore.instance
+          .collection('Dear Canary').doc(mobile)
+          .get()
+          .then((querySnapshot) {
+        // for (var element in querySnapshot.get(mobile)) {
+        itemList.add(querySnapshot.data());
+        // }
+      });
+      return itemList;
+    } catch (e) {
+      throw(e.toString());
+    }
+  }
+
+  String name="";
+
+  @override
+  void initState() {
+    super.initState();
+    fetchDatabaseList();
+  }
+
+  fetchDatabaseList() async {
+    dynamic result = await getUserList();
+    if (result != null) {
+      setState(() {
+        listOfTaskCondition= result[0]["List Of Task"];
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +157,7 @@ class _DailyReportState extends State<DailyReport> {
                               FirebaseFirestore.instance
                                   .collection('Dear Canary')
                                   .doc(mobile)
-                                  .update({"Task Done": taskDone});
+                                  .update({"Task Done": taskDone,"List Of Task": listOfTaskCondition});
                             },
                             child: Container(
                               margin: EdgeInsets.all(mediaQueryWidth * 0.01),
@@ -181,7 +215,7 @@ class _DailyReportState extends State<DailyReport> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  IntroToDailyQuiz(mobile: "")));
+                                  IntroToDailyQuiz(mobile: mobile)));
                     },
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.5,

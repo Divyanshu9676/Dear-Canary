@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:dear_canary/models/user_details.dart';
 import 'package:dear_canary/screens/UserDetailsEntry/user_remaining_data_entry.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Result extends StatelessWidget {
   final int resultScore;
@@ -15,14 +15,24 @@ class Result extends StatelessWidget {
 
   //Remark Logic
   String get resultPhrase {
+    try {
+      // Get reference to Firestore collection
+      var docRef =
+          FirebaseFirestore.instance.collection('Dear Canary').doc(mobile);
+      docRef.update({
+        "Daily test result": resultScore,
+      });
+    } catch (e) {
+      rethrow;
+    }
     String resultText;
-    if(resultScore>=5 && resultScore<8){
+    if (resultScore >= 5 && resultScore < 8) {
       resultText = "Medium";
-    } else if(resultScore >=8) {
+    } else if (resultScore >= 8) {
       resultText = "Severe";
-    } else if(resultScore>2 && resultScore<=5) {
+    } else if (resultScore > 2 && resultScore <= 5) {
       resultText = "Mild";
-    } else{
+    } else {
       resultText = "No";
     }
     return resultText;

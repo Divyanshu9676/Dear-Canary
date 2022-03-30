@@ -445,14 +445,15 @@ class _ProfileState extends State<Profile> {
                           itemCount: weekDayStatus.length,
                           itemBuilder: (BuildContext context, int index) {
                             return Image.asset(
-                              (weekDayStatus[index]["selected"].toString() == "1") ?
-                                (weekDayStatus[index]["total task done"] == "3") ?
-                                  greenWeekDayImageAddress[index] :
-                                    orangeWeekDayImageAddress[index] :
-                              (weekDayStatus[index]["total task done"] == "0") ?
-                                  whiteWeekDayImageAddress[index]:
-                                  orangeWeekDayImageAddress[index]
-                              ,
+                              (weekDayStatus[index]["selected"].toString() == "1")
+                                ? (weekDayStatus[index]["total task done"] ==
+                                        "3")
+                                    ? greenWeekDayImageAddress[index]
+                                    : orangeWeekDayImageAddress[index]
+                                : (weekDayStatus[index]["total task done"] ==
+                                        "0")
+                                    ? whiteWeekDayImageAddress[index]
+                                    : orangeWeekDayImageAddress[index],
                             );
                           },
                         ),

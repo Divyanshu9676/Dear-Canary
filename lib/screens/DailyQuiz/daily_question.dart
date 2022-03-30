@@ -4,11 +4,11 @@ import 'package:dear_canary/screens/DailyQuiz/quiz.dart';
 import 'package:dear_canary/screens/DailyQuiz/result.dart';
 
 class DailyQuestions extends StatefulWidget {
-  var mobile;
-  DailyQuestions(String mobile, {Key? key}) : super(key: key);
+  var value;
+  DailyQuestions({Key? key, @required this.value}) : super(key: key);
 
   @override
-  _DailyQuestionsState createState() => _DailyQuestionsState(mobile);
+  _DailyQuestionsState createState() => _DailyQuestionsState(value);
 }
 
 class _DailyQuestionsState extends State<DailyQuestions> {

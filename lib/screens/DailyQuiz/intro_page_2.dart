@@ -49,7 +49,7 @@ class _IntroToDailyQuizState extends State<IntroToDailyQuiz> {
                 print(mobile);
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DailyQuestions(mobile))
+                    MaterialPageRoute(builder: (context) => DailyQuestions(value: mobile))
                 );
               },
               child: const FaIcon(
