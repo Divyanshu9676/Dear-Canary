@@ -27,9 +27,9 @@ class MyApp extends StatelessWidget {
       //set brightness for icons, like dark background light icons
     ));
 
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(value: "hello"),
+      home: MobileAuth(),
     );
   }
 }
