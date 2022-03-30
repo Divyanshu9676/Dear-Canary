@@ -1,7 +1,8 @@
+import 'package:dear_canary/screens/Community/health_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:dear_canary/screens/Community/experience.dart';
 
 class Community extends StatefulWidget {
   const Community({Key? key}) : super(key: key);
@@ -11,12 +12,13 @@ class Community extends StatefulWidget {
 }
 
 class _CommunityState extends State<Community> {
+
   Future getPosts() async {
     List itemList = [];
     try {
       await FirebaseFirestore.instance
           .collection("Posts")
-          .orderBy("Time", descending: true)
+          .orderBy("number", descending: true)
           .get()
           .then((querySnapshot) {
         for (var ele in querySnapshot.docs) {
@@ -50,8 +52,14 @@ class _CommunityState extends State<Community> {
 
   @override
   Widget build(BuildContext context) {
-    final mediaQueryHeight = MediaQuery.of(context).size.height;
-    final mediaQueryWidth = MediaQuery.of(context).size.width;
+    final mediaQueryHeight = MediaQuery
+        .of(context)
+        .size
+        .height;
+    final mediaQueryWidth = MediaQuery
+        .of(context)
+        .size
+        .width;
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.black,
       //color set to transparent or set your own color
@@ -84,7 +92,8 @@ class _CommunityState extends State<Community> {
               children: <Widget>[
                 // Device button
                 InkWell(
-                  onTap: () {},
+                  onTap: () {Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const HealthSection()));},
                   child: Image.asset("assets/images/bell.png",
                       height: 30, color: const Color(0xFF554E7E)),
                 ),
@@ -101,7 +110,8 @@ class _CommunityState extends State<Community> {
 
                 // Setting Button
                 InkWell(
-                  onTap: () {},
+                  onTap: () {Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const Experience()));},
                   child: Image.asset(
                     "assets/images/bell.png",
                     height: 30,
@@ -127,9 +137,13 @@ class _CommunityState extends State<Community> {
                                   padding: EdgeInsets.symmetric(
                                       horizontal: mediaQueryWidth * 0.02,
                                       vertical: mediaQueryHeight * 0.02),
-                                  child: Card(
-                                      elevation: 0,
-                                      child: Stack(children: <Widget>[]))));
+                                  child: Row(
+                                    children: <Widget>[
+                                      Expanded(
+                                        child: Text(posts[index]["Text"]),
+                                      ),
+                                    ],
+                                  )));
                         }));
               })
             ]));
