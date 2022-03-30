@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MobileAuth(),
+      // home: HomePage(value: "user"),
     );
   }
 }

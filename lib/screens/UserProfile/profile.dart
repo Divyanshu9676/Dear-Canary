@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Profile extends StatefulWidget {
@@ -15,41 +16,85 @@ class _ProfileState extends State<Profile> {
   _ProfileState(this.mobile);
   late String mobile;
 
-  final weekDayStatus = [
+  final whiteWeekDayImageAddress = [
+    "assets/images/mon_white.png",
+    "assets/images/tue_white.png",
+    "assets/images/wed_white.png",
+    "assets/images/thu_white.png",
+    "assets/images/fri_white.png",
+    "assets/images/sat_white.png",
+    "assets/images/sun_white.png"
+  ];
+
+  final greenWeekDayImageAddress = [
+    "assets/images/mon_green.png",
+    "assets/images/tue_green.png",
+    "assets/images/wed_green.png",
+    "assets/images/thu_green.png",
+    "assets/images/fri_green.png",
+    "assets/images/sat_green.png",
+    "assets/images/sun_green.png"
+  ];
+
+  final orangeWeekDayImageAddress = [
+    "assets/images/mon_orange.png",
+    "assets/images/tue_orange.png",
+    "assets/images/wed_orange.png",
+    "assets/images/thu_orange.png",
+    "assets/images/fri_orange.png",
+    "assets/images/sat_orange.png",
+    "assets/images/sun_orange.png"
+  ];
+
+  final emptyWeekDayImageAddress = [
+    "assets/images/mon.png",
+    "assets/images/tue.png",
+    "assets/images/wed.png",
+    "assets/images/thu.png",
+    "assets/images/fri.png",
+    "assets/images/sat.png",
+    "assets/images/sun.png"
+  ];
+
+
+
+
+
+  List weekDayStatus  = <Map<String, String>>[
     {
-      "image address" : "assets/images/mon.png",
-      "total task done": 3,
-      "test taken": true
+      "day" : "monday",
+      "total task done" : "3",
+      "test taken" : "1"
     },
     {
-      "image address" : "assets/images/tue.png",
-      "total task done": 2,
-      "test taken": true
+      "day" : "tuesday",
+      "total task done" : "2",
+      "test taken" : "1"
     },
     {
-      "image address" : "assets/images/wed.png",
-      "total task done": 1,
-      "test taken": true
+      "day" : "wednesday",
+      "total task done" : "1",
+      "test taken" : "1"
     },
     {
-      "image address" : "assets/images/thu.png",
-      "total task done": 0,
-      "test taken": true
+      "day" : "thursday",
+      "total task done" : "0",
+      "test taken" : "1"
     },
     {
-      "image address" : "assets/images/fri.png",
-      "total task done": 3,
-      "test taken": false
+      "day" : "friday",
+      "total task done" : "3",
+      "test taken" : "0"
     },
     {
-      "image address" : "assets/images/sat.png",
-      "total task done": 2,
-      "test taken": false
+      "day" : "saturday",
+      "total task done" : "2",
+      "test taken" : "0"
     },
     {
-      "image address" : "assets/images/sun.png",
-      "total task done": 1,
-      "test taken": false
+      "day" : "sunday",
+      "total task done" : "1",
+      "test taken" : "0"
     },
   ];
   
@@ -105,6 +150,97 @@ class _ProfileState extends State<Profile> {
         )
     );
 
+    // Alert Dialog
+    Future<void> _showMyDialog() async {
+      return showDialog<void>(
+        context: context,
+        barrierDismissible: false, // user must tap button!
+        builder: (BuildContext context) {
+          return AlertDialog(
+
+            backgroundColor: const Color(0xfffff0e1),
+            shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            content: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Image.asset(
+                        "assets/images/fri_white.png",
+                      height: mediaQueryHeight * 0.05,
+                    ),
+                    SizedBox(width: mediaQueryWidth * 0.02,),
+                    const Text(
+                      "Not done any task/test",
+                      style: TextStyle(
+                        fontFamily: "Poppins"
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(height: mediaQueryHeight * 0.02,),
+                Row(
+                  children: <Widget>[
+                    Image.asset(
+                      "assets/images/fri_orange.png",
+                      height: mediaQueryHeight * 0.05,
+                    ),
+                    SizedBox(width: mediaQueryWidth * 0.02,),
+                    const Text(
+                      "Missing any task/test",
+                      style: TextStyle(
+                          fontFamily: "Poppins"
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(height: mediaQueryHeight * 0.02,),
+                Row(
+                  children: <Widget>[
+                    Image.asset(
+                      "assets/images/fri_green.png",
+                      height: mediaQueryHeight * 0.05,
+                    ),
+                    SizedBox(width: mediaQueryWidth * 0.02,),
+                    const Text(
+                      "Completed all task/test",
+                      style: TextStyle(
+                          fontFamily: "Poppins"
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(height: mediaQueryHeight * 0.02,),
+                Row(
+                  children: <Widget>[
+                    Image.asset(
+                      "assets/images/fri.png",
+                      height: mediaQueryHeight * 0.05,
+                    ),
+                    SizedBox(width: mediaQueryWidth * 0.02,),
+                    const Text(
+                      "Day yet to come",
+                      style: TextStyle(
+                          fontFamily: "Poppins"
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: const Text('Ok'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     return Scaffold(
       backgroundColor: const Color(0xfffff0e1),
       resizeToAvoidBottomInset: false,
@@ -144,10 +280,12 @@ class _ProfileState extends State<Profile> {
             Positioned(
               top: mediaQueryHeight * 0.08,
               left: mediaQueryWidth * 0.08,
-              child: Image.asset(
-                "assets/images/profile.png",
-                height: 150,
-              ),
+              child: CircleAvatar(
+                radius: mediaQueryHeight * 0.1,
+                backgroundImage: AssetImage(
+                  "assets/images/black_woman.jpg"
+                ),
+              )
             ),
 
             // woman sitting png
@@ -260,7 +398,9 @@ class _ProfileState extends State<Profile> {
                               ),
                           ),
                           IconButton(
-                              onPressed: (){},
+                              onPressed: (){
+                                _showMyDialog();
+                              },
                               icon: Icon(
                                 Icons.info_outlined,
                                 color: Colors.white,
@@ -300,7 +440,14 @@ class _ProfileState extends State<Profile> {
                           itemCount: weekDayStatus.length,
                           itemBuilder: (BuildContext context, int index) {
                             return Image.asset(
-                              weekDayStatus[index]["image address"].toString(),
+                              (weekDayStatus[index]["selected"].toString() == "1") ?
+                                (weekDayStatus[index]["total task done"] == "3") ?
+                                  greenWeekDayImageAddress[index] :
+                                    orangeWeekDayImageAddress[index] :
+                              (weekDayStatus[index]["total task done"] == "0") ?
+                                  whiteWeekDayImageAddress[index]:
+                                  orangeWeekDayImageAddress[index]
+                              ,
                             );
                           },
                         ),

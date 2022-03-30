@@ -137,6 +137,13 @@ flutter:
     - assets/images/fri_orange.png
     - assets/images/sat_orange.png
     - assets/images/sun_orange.png
+    - assets/images/mon_green.png
+    - assets/images/tue_green.png
+    - assets/images/wed_green.png
+    - assets/images/thu_green.png
+    - assets/images/fri_green.png
+    - assets/images/sat_green.png
+    - assets/images/sun_green.png
     - assets/gif/girl_1.gif
     - assets/gif/girl_3.gif
     - assets/gif/girl_10.gif
