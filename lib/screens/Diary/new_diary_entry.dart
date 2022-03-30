@@ -1,21 +1,38 @@
+import 'dart:math';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:dear_canary/models/user_details.dart';
 import 'package:dear_canary/screens/Diary/diary.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class NewDiaryEntry extends StatefulWidget {
-  const NewDiaryEntry({Key? key}) : super(key: key);
+  var value;
+  NewDiaryEntry({Key? key, @required this.value}) : super(key: key);
 
   @override
-  State<NewDiaryEntry> createState() => _NewDiaryEntryState();
+  State<NewDiaryEntry> createState() => _NewDiaryEntryState(value);
 }
 
 class _NewDiaryEntryState extends State<NewDiaryEntry> {
+  _NewDiaryEntryState(this.mobile);
+  late String mobile;
 
   final _userDiaryEntry = TextEditingController();
 
   bool autoFocusTextFormField = false;
+
+  String getRandomString() {
+    const _chars =
+        'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+    Random _rnd = Random();
+
+    String getRandomString(int length) =>
+        String.fromCharCodes(Iterable.generate(
+            length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
+    var namePost = getRandomString(15);
+    return namePost;
+  }
 
   // Alert Dialog when entry not found
   Future<void> _showMyDialog() async {
@@ -76,7 +93,7 @@ class _NewDiaryEntryState extends State<NewDiaryEntry> {
                 });
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Diary())
+                  MaterialPageRoute(builder: (context) => Diary(value: mobile,))
                 );
               },
             ),
@@ -193,6 +210,16 @@ class _NewDiaryEntryState extends State<NewDiaryEntry> {
                             setState(() {
                               autoFocusTextFormField = false;
                             });
+                          }
+                          try {
+                            // Get reference to Firestore collection
+                            var docRef =
+                            FirebaseFirestore.instance.collection('Dear Canary').doc(mobile).collection("Diary").doc(getRandomString());
+                            docRef.update({
+                              "Text": _userDiaryEntry.text,
+                            });
+                          } catch (e) {
+                            rethrow;
                           }
                         },
                         child: const Text(

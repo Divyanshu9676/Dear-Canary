@@ -5,13 +5,16 @@ import 'package:dear_canary/screens/Diary/new_diary_entry.dart';
 import 'package:dear_canary/screens/Diary/old_diary_entry.dart';
 
 class Diary extends StatefulWidget {
-  const Diary({Key? key}) : super(key: key);
+  var value;
+  Diary({Key? key, @required this.value}) : super(key: key);
 
   @override
-  _DiaryState createState() => _DiaryState();
+  _DiaryState createState() => _DiaryState(value);
 }
 
 class _DiaryState extends State<Diary> {
+  _DiaryState(this.mobile);
+  late String mobile;
   @override
   Widget build(BuildContext context) {
 
@@ -108,7 +111,7 @@ class _DiaryState extends State<Diary> {
                     onTap: (){
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const NewDiaryEntry())
+                        MaterialPageRoute(builder: (context) => NewDiaryEntry(value: mobile,))
                       );
                     },
                     child: Container(

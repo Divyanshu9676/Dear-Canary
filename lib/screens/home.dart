@@ -252,7 +252,7 @@ class _HomePageState extends State<HomePage> {
                                 onTap: (){
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => const Diary())
+                                    MaterialPageRoute(builder: (context) => Diary(value: mobile,))
                                   );
                                 },
                                 borderRadius: BorderRadius.circular(20),
