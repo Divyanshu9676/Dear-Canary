@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Profile extends StatefulWidget {
   var value;
@@ -98,7 +99,7 @@ class _ProfileState extends State<Profile> {
     },
   ];
   
-  Future getUserList(String docId) async {
+  Future getUserList() async {
     List itemList = [];
     try {
       await FirebaseFirestore.instance
@@ -125,13 +126,10 @@ class _ProfileState extends State<Profile> {
   }
 
   fetchDatabaseList() async {
-    dynamic result = await getUserList(mobile);
-    if (result == null) {
-      print("Error");
-    } else {
+    dynamic result = await getUserList();
+    if (result != null) {
       setState(() {
         user = result;
-        name=user[0]["Name"].toString();
       });
     }
   }
@@ -141,7 +139,6 @@ class _ProfileState extends State<Profile> {
 
     final mediaQueryHeight = MediaQuery.of(context).size.height;
     final mediaQueryWidth = MediaQuery.of(context).size.width;
-    
 
     SystemChrome.setSystemUIOverlayStyle(
         const SystemUiOverlayStyle(
@@ -282,7 +279,7 @@ class _ProfileState extends State<Profile> {
               left: mediaQueryWidth * 0.08,
               child: CircleAvatar(
                 radius: mediaQueryHeight * 0.1,
-                backgroundImage: AssetImage(
+                backgroundImage: const AssetImage(
                   "assets/images/black_woman.jpg"
                 ),
               )
@@ -311,9 +308,9 @@ class _ProfileState extends State<Profile> {
                     SizedBox(height: mediaQueryHeight*0.01,),
 
                     // User's Name
-                    const Text(
-                      "Michale Standred",
-                      style: TextStyle(
+                    Text(
+                      (user.isNotEmpty ? user[0]['Name'] : ''),
+                      style: const TextStyle(
                           fontFamily: "Poppins",
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -325,10 +322,10 @@ class _ProfileState extends State<Profile> {
 
                     // Age
                     RichText(
-                        text: const TextSpan(
+                        text: TextSpan(
                           children: <TextSpan>[
-                            TextSpan(
-                              text: "Age: ",
+                            const TextSpan(
+                              text: "DOB: ",
                               style: TextStyle(
                                 color: Colors.black,
                                 fontFamily: "Poppins",
@@ -337,8 +334,8 @@ class _ProfileState extends State<Profile> {
                               )
                             ),
                             TextSpan(
-                                text: "34",
-                                style: TextStyle(
+                                text: (user.isNotEmpty ? user[0]["DOB"] : ''),
+                                style: const TextStyle(
                                     color: Colors.white,
                                     fontFamily: "Poppins",
                                     fontSize: 20
@@ -350,9 +347,9 @@ class _ProfileState extends State<Profile> {
 
                     // Location
                     RichText(
-                      text: const TextSpan(
+                      text: TextSpan(
                           children: <TextSpan>[
-                            TextSpan(
+                            const TextSpan(
                                 text: "Location: ",
                                 style: TextStyle(
                                     color: Colors.black,
@@ -362,8 +359,8 @@ class _ProfileState extends State<Profile> {
                                 )
                             ),
                             TextSpan(
-                                text: "Washington, USA",
-                                style: TextStyle(
+                                text: (user.isNotEmpty ? user[0]['State']+" ,"+ user[0]['Country'] : ''),
+                                style: const TextStyle(
                                     color: Colors.white,
                                     fontFamily: "Poppins",
                                     fontSize: 20
