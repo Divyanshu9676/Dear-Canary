@@ -5,7 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:twilio_flutter/twilio_flutter.dart';
 import 'package:dear_canary/models/user_details.dart';
 import 'package:dear_canary/screens/UserDetailsEntry/user_basic_details_enrty.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dear_canary/screens/home.dart';
 // import 'package:tele_doc/widget/otp_verify.dart';
 
 // Enum created for switching between login and otp verify screen
@@ -52,8 +53,22 @@ class _MobileAuthState extends State<MobileAuth> {
       });
 
       if (authCredential.user != null) {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => BasicDataEntry(value: _mobileController.text)));
+        var collectionRef =
+            FirebaseFirestore.instance.collection('Dear Canary');
+        var doc = await collectionRef.doc(_mobileController.text).get();
+        if (doc.exists) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return HomePage(
+              value: _mobileController.text,
+            );
+          }));
+        } else {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      BasicDataEntry(value: _mobileController.text)));
+        }
       }
     } on FirebaseAuthException catch (e) {
       setState(() {
@@ -103,7 +118,7 @@ class _MobileAuthState extends State<MobileAuth> {
     // Function to send OTP
     void _sendOTP() async {
       await _auth.verifyPhoneNumber(
-          phoneNumber: "+91"+_mobileController.text,
+          phoneNumber: "+91" + _mobileController.text,
           verificationCompleted: (phoneAuthCredential) async {
             setState(() {
               showLoading = false;
@@ -212,7 +227,7 @@ class _MobileAuthState extends State<MobileAuth> {
                               style: TextButton.styleFrom(
                                   backgroundColor: const Color(0xff084d52)),
                               onPressed: () async {
-                                  if (_mobileController.text.isEmpty) {
+                                if (_mobileController.text.isEmpty) {
                                   _showMyDialog("Enter your mobile number");
                                 } else {
                                   setState(() {
