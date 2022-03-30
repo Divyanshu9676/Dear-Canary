@@ -1,4 +1,5 @@
 import 'package:dear_canary/screens/DailyQuiz/intro_page_2.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -29,6 +30,10 @@ class _DailyReportState extends State<DailyReport> {
     }
   ];
 
+  final listOfTaskCondition = [false, false, false];
+
+  final taskDone = [];
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -56,18 +61,18 @@ class _DailyReportState extends State<DailyReport> {
                   children: <Widget>[
 
                     SizedBox(
-                      height: mediaQueryHeight * 0.1,
+                      height: mediaQueryHeight * 0.025,
                     ),
 
                     // "Daily task" text
                     const Align(
-                      alignment: Alignment.topLeft,
+                      alignment: Alignment.center,
                       child: Padding(
                         padding: EdgeInsets.all(8.0),
                         child: Text(
                           "Daily Task",
                           style: TextStyle(
-                            fontSize: 30,
+                            fontSize: 35,
                             fontFamily: "Bebas Neue",
                             color: Colors.white
                           ),
@@ -75,13 +80,91 @@ class _DailyReportState extends State<DailyReport> {
                       ),
                     ),
 
-                    ListView.builder(
-                      itemCount: listOfTasks.length,
-                      itemBuilder: (BuildContext context, int index){
-                        return Card();
-                      },
+                    // "Daily task" text
+                    const Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                          "Select if done any...",
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontFamily: "Poppins",
+                              color: Colors.white,
+                              fontStyle: FontStyle.italic
+                          ),
+                        ),
+
                     ),
 
+                    SizedBox(height: mediaQueryHeight * 0.02),
+                    const Divider(color: Colors.white, thickness: 1),
+                    SizedBox(height: mediaQueryHeight * 0.025),
+
+                    //Daily task list
+                    SizedBox(
+                      height: mediaQueryHeight * 0.3,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: listOfTasks.length,
+                        itemBuilder: (BuildContext context, int index){
+                          return SingleChildScrollView(
+                            child: Padding(
+                              padding: EdgeInsets.all(mediaQueryWidth * 0.01),
+                              child: InkWell(
+                                onTap: (){
+                                  setState(() {
+                                    listOfTaskCondition[index] = !listOfTaskCondition[index];
+                                  });
+                                  if(listOfTaskCondition[index]){
+                                    taskDone.add(listOfTasks[index]["name"].toString());
+                                  } else {
+                                    taskDone.removeWhere((element) => element == listOfTasks[index]["name"]);
+                                  }
+                                  print(taskDone);
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.all(mediaQueryWidth * 0.01),
+                                  height: mediaQueryHeight * 0.25,
+                                  width: mediaQueryHeight * 0.3,
+                                  decoration: BoxDecoration(
+                                    color:  !listOfTaskCondition[index]?
+                                            Colors.white : Colors.green,
+                                    // color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20)
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Image.asset(
+                                        listOfTasks[index]["image address"].toString(),
+                                        height: mediaQueryHeight * 0.1,
+                                      ),
+                                      SizedBox(
+                                        height: mediaQueryHeight * 0.02,
+                                      ),
+                                      Text(
+                                        listOfTasks[index]["name"].toString(),
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontFamily: "Poppins",
+                                          fontSize: 15,
+                                          color:  !listOfTaskCondition[index]?
+                                                  Colors.black : Colors.white,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+
+                    SizedBox(height: mediaQueryHeight * 0.02),
+                    const Divider(color: Colors.white, thickness: 1),
+                    SizedBox(height: mediaQueryHeight * 0.025),
 
                     // "Take a quick test" button
                     Align(
@@ -98,7 +181,7 @@ class _DailyReportState extends State<DailyReport> {
                               borderRadius: BorderRadius.circular(30),
                               border: Border.all(
                                   color: const Color(0xff8434f2), width: 5),
-                              color: const Color(0xff8434f2).withOpacity(0.5)),
+                              color: const Color(0xff8434f2).withOpacity(0.6)),
                           child: const Text(
                             "Take a quick test",
                             textAlign: TextAlign.center,
@@ -110,6 +193,8 @@ class _DailyReportState extends State<DailyReport> {
                         ),
                       ),
                     ),
+
+
 
                   ],
                 ),
