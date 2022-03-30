@@ -48,7 +48,7 @@ class _ExperienceState extends State<Experience> {
                 InkWell(
                   onTap: () {Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const HealthSection()));},
-                  child: Image.asset("assets/images/bell.png",
+                  child: Image.asset("assets/images/health.png",
                       height: 30, color: const Color(0xFF554E7E)),
                 ),
 
@@ -67,7 +67,7 @@ class _ExperienceState extends State<Experience> {
                 InkWell(
                   onTap: () {},
                   child: Image.asset(
-                    "assets/images/bell.png",
+                    "assets/images/experience.png",
                     height: 30,
                     color: const Color(0xFF554E7E),
                   ),

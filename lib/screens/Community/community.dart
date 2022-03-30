@@ -94,7 +94,7 @@ class _CommunityState extends State<Community> {
                 InkWell(
                   onTap: () {Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const HealthSection()));},
-                  child: Image.asset("assets/images/bell.png",
+                  child: Image.asset("assets/images/health.png",
                       height: 30, color: const Color(0xFF554E7E)),
                 ),
 
@@ -113,7 +113,7 @@ class _CommunityState extends State<Community> {
                   onTap: () {Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const Experience()));},
                   child: Image.asset(
-                    "assets/images/bell.png",
+                    "assets/images/experience.png",
                     height: 30,
                     color: const Color(0xFF554E7E),
                   ),
