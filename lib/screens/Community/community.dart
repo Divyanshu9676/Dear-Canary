@@ -1,9 +1,6 @@
-import 'package:dear_canary/screens/Community/health_section.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dear_canary/screens/Community/experience.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Community extends StatefulWidget {

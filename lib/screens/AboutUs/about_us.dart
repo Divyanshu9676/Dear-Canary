@@ -54,7 +54,7 @@ class _AboutUsState extends State<AboutUs> {
                       fontSize: 25
                   ),
                 ),
-                const SizedBox(height: 5,),
+               const SizedBox(height: 5,),
                 Center(
                   child: Image.asset(
                       "assets/gif/girl_16(1).gif"
