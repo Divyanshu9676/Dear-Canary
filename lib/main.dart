@@ -22,15 +22,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
-      //color set to transperent or set your own color
+      //color set to transparent or set your own color
       statusBarIconBrightness: Brightness.dark,
       //set brightness for icons, like dark background light icons
     ));
 
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MobileAuth(),
-      // home: HomePage(value: "user"),
+      // home: MobileAuth(),
+      home: HomePage(value: "user"),
     );
   }
 }

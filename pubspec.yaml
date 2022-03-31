@@ -114,8 +114,11 @@ flutter:
     - assets/images/woman_sitting.png
     - assets/images/test.png
     - assets/images/meditation.png
+    - assets/images/chat.png
     - assets/images/yoga.png
     - assets/images/food.png
+    - assets/images/experience.png
+    - assets/images/health.png
     - assets/images/mon.png
     - assets/images/tue.png
     - assets/images/wed.png
@@ -155,8 +158,7 @@ flutter:
     - assets/gif/girl_29.gif
     - assets/gif/girl_30.gif
     - assets/gif/girl_31.gif
-    - assets/images/experience.png
-    - assets/images/health.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
