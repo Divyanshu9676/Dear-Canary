@@ -1,7 +1,10 @@
+import 'package:dear_canary/screens/Community/chat.dart';
+import 'package:dear_canary/screens/Community/health.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 
 class Community extends StatefulWidget {
   const Community({Key? key}) : super(key: key);
@@ -12,7 +15,7 @@ class Community extends StatefulWidget {
 
 class _CommunityState extends State<Community> {
 
-  final pageSelected = [true, false, false];
+  final pageSelectedCondition = [true, false, false];
 
   Future getPosts() async {
     List itemList = [];
@@ -94,7 +97,7 @@ class _CommunityState extends State<Community> {
                   width: mediaQueryWidth/3,
                   height: mediaQueryHeight * 0.075,
                   decoration: BoxDecoration(
-                      color: pageSelected[0] ? Colors.white.withOpacity(0.75) : Colors.black,
+                      color: pageSelectedCondition[0] ? Colors.white.withOpacity(0.75) : Colors.black,
                       borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(40)
                       ),
@@ -108,9 +111,9 @@ class _CommunityState extends State<Community> {
                     child: InkWell(
                       onTap: () {
                         setState(() {
-                          pageSelected[1] = false;
-                          pageSelected[2] = false;
-                          pageSelected[0] = true;
+                          pageSelectedCondition[1] = false;
+                          pageSelectedCondition[2] = false;
+                          pageSelectedCondition[0] = true;
                         });
                       },
                       child: Image.asset("assets/images/health.png",
@@ -124,7 +127,7 @@ class _CommunityState extends State<Community> {
                   width: mediaQueryWidth/3,
                   height: mediaQueryHeight * 0.075,
                   decoration: BoxDecoration(
-                      color: pageSelected[1] ? Colors.white.withOpacity(0.75) : Colors.black,
+                      color: pageSelectedCondition[1] ? Colors.white.withOpacity(0.75) : Colors.black,
                       border: Border.all()
                       // borderRadius: BorderRadius.only(
                       //     topLeft: Radius.circular(40)
@@ -138,9 +141,9 @@ class _CommunityState extends State<Community> {
                     child: InkWell(
                       onTap: () {
                         setState(() {
-                          pageSelected[0] = false;
-                          pageSelected[2] = false;
-                          pageSelected[1] = true;
+                          pageSelectedCondition[0] = false;
+                          pageSelectedCondition[2] = false;
+                          pageSelectedCondition[1] = true;
                         });
                       },
                       child: Image.asset("assets/images/experience.png",
@@ -154,7 +157,7 @@ class _CommunityState extends State<Community> {
                   width: mediaQueryWidth/3,
                   height: mediaQueryHeight * 0.075,
                   decoration: BoxDecoration(
-                      color: pageSelected[2] ? Colors.white.withOpacity(0.75) : Colors.black,
+                      color: pageSelectedCondition[2] ? Colors.white.withOpacity(0.75) : Colors.black,
                       borderRadius: const BorderRadius.only(
                           topRight: Radius.circular(40)
                       ),
@@ -167,10 +170,11 @@ class _CommunityState extends State<Community> {
                     ),
                     child: InkWell(
                       onTap: () {
+                        // Navigator.push(context, MaterialPageRoute(builder: (context)=>CommunityChat()));
                         setState(() {
-                          pageSelected[0] = false;
-                          pageSelected[1] = false;
-                          pageSelected[2] = true;
+                          pageSelectedCondition[0] = false;
+                          pageSelectedCondition[1] = false;
+                          pageSelectedCondition[2] = true;
                         });
                       },
                       child: Image.asset("assets/images/chat.png",
@@ -183,39 +187,41 @@ class _CommunityState extends State<Community> {
 
           ),
 
-        body: Stack(
-          children: <Widget>[
-            Center(
-              child: Image.asset(
-                "assets/gif/girl_28.gif"
-              ),
-            ),
-            Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  StreamBuilder(builder: (context, snapshot) {
-                    return Expanded(
-                        child: ListView.builder(
-                            scrollDirection: Axis.vertical,
-                            shrinkWrap: true,
-                            itemCount: posts.length,
-                            itemBuilder: (context, index) {
-                              return SingleChildScrollView(
-                                  child: Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: mediaQueryWidth * 0.02,
-                                          vertical: mediaQueryHeight * 0.02),
-                                      child: Row(
-                                        children: <Widget>[
-                                          Expanded(
-                                            child: Text(posts[index]["Text"]),
-                                          ),
-                                        ],
-                                      )));
-                            }));
-                  })
-                ])
-          ],
-        ));
+        body: CommunityHealth()
+            // Column(
+            //     mainAxisAlignment: MainAxisAlignment.start,
+            //     children: <Widget>[
+                  // StreamBuilder(builder: (context, snapshot) {
+                    // return Expanded(
+                    //     child: ListView.builder(
+                    //         scrollDirection: Axis.vertical,
+                    //         shrinkWrap: true,
+                    //         itemCount: posts.length,
+                    //         itemBuilder: (context, index) {
+                    //           return SingleChildScrollView(
+                    //               child: Padding(
+                    //                   padding: EdgeInsets.symmetric(
+                    //                       horizontal: mediaQueryWidth * 0.02,
+                    //                       vertical: mediaQueryHeight * 0.02),
+                    //                   child: Row(
+                    //                     children: <Widget>[
+                    //                       Expanded(
+                    //                         child: Text(posts[index]["Text"]),
+                    //                       ),
+                    //                     ],
+                    //                   )));
+                    //         })
+                    //     return Container(
+                          // child: currentState == PageSelectionState.SHOW_HEALTH_SECTION ?
+                          //   getExperienceSectionWidget(context):
+                          //     currentState == PageSelectionState.SHOW_CHAT_SECTION ?
+                          //       getChatSectionWidget(context): getExperienceSectionWidget(context),
+
+                        // );
+
+                  // })
+                // ])
+
+        );
   }
 }
