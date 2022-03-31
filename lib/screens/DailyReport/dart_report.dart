@@ -2,6 +2,7 @@ import 'package:dear_canary/screens/DailyQuiz/intro_page_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DailyReport extends StatefulWidget {
   var mobile;
@@ -82,117 +83,128 @@ class _DailyReportState extends State<DailyReport> {
 
     return SafeArea(
         child: Scaffold(
-      backgroundColor: const Color(0xffca9dff),
-      body: Stack(
-        children: <Widget>[
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Image.asset(
-              "assets/gif/girl_10.gif",
+          backgroundColor: const Color(0xffca9dff),
+          floatingActionButton: FloatingActionButton(
+            child: const FaIcon(
+              FontAwesomeIcons.home,
+              color: Colors.white,
             ),
+            backgroundColor: Colors.black,
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
-          SizedBox(
-            height: double.infinity,
-            child: Column(
-              children: <Widget>[
-                SizedBox(
-                  height: mediaQueryHeight * 0.025,
+          floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+          body: Stack(
+            children: <Widget>[
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Image.asset(
+                  "assets/gif/girl_10.gif",
                 ),
-
-                // "Daily task" text
-                const Align(
-                  alignment: Alignment.center,
-                  child: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      "Daily Task",
-                      style: TextStyle(
-                          fontSize: 35,
-                          fontFamily: "Bebas Neue",
-                          color: Colors.white),
+              ),
+              SizedBox(
+                height: double.infinity,
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(
+                      height: mediaQueryHeight * 0.025,
                     ),
-                  ),
-                ),
 
                 // "Daily task" text
-                const Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Select if done any...",
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontFamily: "Poppins",
-                        color: Colors.white,
-                        fontStyle: FontStyle.italic),
-                  ),
-                ),
+                    const Align(
+                      alignment: Alignment.center,
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          "Daily Task",
+                          style: TextStyle(
+                              fontSize: 35,
+                              fontFamily: "Bebas Neue",
+                              color: Colors.white),
+                        ),
+                      ),
+                    ),
 
-                SizedBox(height: mediaQueryHeight * 0.02),
-                const Divider(color: Colors.white, thickness: 1),
-                SizedBox(height: mediaQueryHeight * 0.025),
+                // "Daily task" text
+                    const Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Select if done any...",
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontFamily: "Poppins",
+                            color: Colors.white,
+                            fontStyle: FontStyle.italic),
+                      ),
+                    ),
 
-                //Daily task list
-                SizedBox(
-                  height: mediaQueryHeight * 0.3,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: listOfTasks.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return SingleChildScrollView(
-                        child: Padding(
-                          padding: EdgeInsets.all(mediaQueryWidth * 0.01),
-                          child: InkWell(
-                            onTap: () {
-                              setState(() {
-                                listOfTaskCondition[index] =
-                                    !listOfTaskCondition[index];
-                              });
-                              if (listOfTaskCondition[index]) {
-                                taskDone
-                                    .add(listOfTasks[index]["name"].toString());
-                              } else {
-                                taskDone.removeWhere((element) =>
-                                    element == listOfTasks[index]["name"]);
-                              }
-                              FirebaseFirestore.instance
-                                  .collection('Dear Canary')
-                                  .doc(mobile)
-                                  .update({"Task Done": taskDone,"List Of Task": listOfTaskCondition});
-                            },
-                            child: Container(
-                              margin: EdgeInsets.all(mediaQueryWidth * 0.01),
-                              height: mediaQueryHeight * 0.25,
-                              width: mediaQueryHeight * 0.3,
-                              decoration: BoxDecoration(
-                                  color: !listOfTaskCondition[index]
-                                      ? Colors.white
-                                      : Colors.green,
-                                  // color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Image.asset(
-                                    listOfTasks[index]["image address"]
-                                        .toString(),
-                                    height: mediaQueryHeight * 0.1,
-                                  ),
-                                  SizedBox(
-                                    height: mediaQueryHeight * 0.02,
-                                  ),
-                                  Text(
-                                    listOfTasks[index]["name"].toString(),
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontFamily: "Poppins",
-                                      fontSize: 15,
+                    SizedBox(height: mediaQueryHeight * 0.02),
+                    const Divider(color: Colors.white, thickness: 1),
+                    SizedBox(height: mediaQueryHeight * 0.025),
+
+                    //Daily task list
+                    SizedBox(
+                      height: mediaQueryHeight * 0.3,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: listOfTasks.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return SingleChildScrollView(
+                            child: Padding(
+                              padding: EdgeInsets.all(mediaQueryWidth * 0.01),
+                              child: InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    listOfTaskCondition[index] =
+                                        !listOfTaskCondition[index];
+                                  });
+                                  if (listOfTaskCondition[index]) {
+                                    taskDone
+                                        .add(listOfTasks[index]["name"].toString());
+                                  } else {
+                                    taskDone.removeWhere((element) =>
+                                        element == listOfTasks[index]["name"]);
+                                  }
+                                  FirebaseFirestore.instance
+                                      .collection('Dear Canary')
+                                      .doc(mobile)
+                                      .update({"Task Done": taskDone,"List Of Task": listOfTaskCondition});
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.all(mediaQueryWidth * 0.01),
+                                  height: mediaQueryHeight * 0.25,
+                                  width: mediaQueryHeight * 0.3,
+                                  decoration: BoxDecoration(
                                       color: !listOfTaskCondition[index]
-                                          ? Colors.black
-                                          : Colors.white,
-                                    ),
-                                  )
-                                ],
+                                          ? Colors.white
+                                          : Colors.green,
+                                      // color: Colors.white,
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Image.asset(
+                                        listOfTasks[index]["image address"]
+                                            .toString(),
+                                        height: mediaQueryHeight * 0.1,
+                                      ),
+                                      SizedBox(
+                                        height: mediaQueryHeight * 0.02,
+                                      ),
+                                      Text(
+                                        listOfTasks[index]["name"].toString(),
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontFamily: "Poppins",
+                                          fontSize: 15,
+                                          color: !listOfTaskCondition[index]
+                                              ? Colors.black
+                                              : Colors.white,
+                                        ),
+                                      )
+                                    ],
                               ),
                             ),
                           ),

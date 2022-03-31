@@ -31,11 +31,13 @@ class _CommunityHealthState extends State<CommunityHealth> {
 
           Container(
             height: mediaQueryHeight * 0.95,
+            // color: Colors.orangeAccent.withOpacity(0.5),
             child: Center(child: Column(
               children: <Widget>[
                 Column(
                   children: <Widget>[
                     Container(
+
                       child: Row(
                         children: const <Widget>[
                           Text("26/7/2022"),
