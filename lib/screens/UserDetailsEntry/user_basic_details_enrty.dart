@@ -74,6 +74,7 @@ class _BasicDataEntryState extends State<BasicDataEntry> {
         "Currently Pregnant": _userCurrentlyPregnant,
         "Time": currentDate,
         "Delivery Time": _userDeliveryDate,
+        "Task Done":[],
       }, SetOptions(merge: true));
     } catch (e) {
       rethrow;

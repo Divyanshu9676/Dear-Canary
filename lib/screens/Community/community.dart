@@ -187,41 +187,7 @@ class _CommunityState extends State<Community> {
 
           ),
 
-        body: CommunityHealth()
-            // Column(
-            //     mainAxisAlignment: MainAxisAlignment.start,
-            //     children: <Widget>[
-                  // StreamBuilder(builder: (context, snapshot) {
-                    // return Expanded(
-                    //     child: ListView.builder(
-                    //         scrollDirection: Axis.vertical,
-                    //         shrinkWrap: true,
-                    //         itemCount: posts.length,
-                    //         itemBuilder: (context, index) {
-                    //           return SingleChildScrollView(
-                    //               child: Padding(
-                    //                   padding: EdgeInsets.symmetric(
-                    //                       horizontal: mediaQueryWidth * 0.02,
-                    //                       vertical: mediaQueryHeight * 0.02),
-                    //                   child: Row(
-                    //                     children: <Widget>[
-                    //                       Expanded(
-                    //                         child: Text(posts[index]["Text"]),
-                    //                       ),
-                    //                     ],
-                    //                   )));
-                    //         })
-                    //     return Container(
-                          // child: currentState == PageSelectionState.SHOW_HEALTH_SECTION ?
-                          //   getExperienceSectionWidget(context):
-                          //     currentState == PageSelectionState.SHOW_CHAT_SECTION ?
-                          //       getChatSectionWidget(context): getExperienceSectionWidget(context),
-
-                        // );
-
-                  // })
-                // ])
-
+        body: const CommunityHealth()
         );
   }
 }

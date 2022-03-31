@@ -176,9 +176,10 @@ class _NewDiaryEntryState extends State<NewDiaryEntry> {
                               horizontal: 15
                           ),
                           child: SingleChildScrollView(
-                            child: TextFormField(
-                              minLines: 1,
+                            child: TextField(
+                              minLines: 50,
                               maxLines: 50,
+                              textInputAction: TextInputAction.newline,
                               autofocus: autoFocusTextFormField,
                               style: const TextStyle(
                                   color: Colors.white
@@ -215,7 +216,7 @@ class _NewDiaryEntryState extends State<NewDiaryEntry> {
                             // Get reference to Firestore collection
                             var docRef =
                             FirebaseFirestore.instance.collection('Dear Canary').doc(mobile).collection("Diary").doc(getRandomString());
-                            docRef.update({
+                            docRef.set({
                               "Text": _userDiaryEntry.text,
                             });
                           } catch (e) {
