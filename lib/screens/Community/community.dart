@@ -1,8 +1,10 @@
 import 'package:dear_canary/screens/Community/health_section.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dear_canary/screens/Community/experience.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Community extends StatefulWidget {
   const Community({Key? key}) : super(key: key);
@@ -12,6 +14,8 @@ class Community extends StatefulWidget {
 }
 
 class _CommunityState extends State<Community> {
+
+  final pageSelected = [true, false, false];
 
   Future getPosts() async {
     List itemList = [];
@@ -61,91 +65,160 @@ class _CommunityState extends State<Community> {
         .size
         .width;
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.black,
+      statusBarColor: Color(0xfff3e9de),
       //color set to transparent or set your own color
       statusBarIconBrightness: Brightness.dark,
       //set brightness for icons, like dark background light icons
     ));
 
     return Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            "Community",
-            style: TextStyle(
-              fontFamily: "Poppins",
-            ),
-          ),
-          backgroundColor: Colors.black,
+
+        backgroundColor: const Color(0xfff3e9de),
+
+      floatingActionButton: FloatingActionButton(
+        child: const FaIcon(
+          FontAwesomeIcons.home,
+          color: Colors.white,
         ),
-        bottomNavigationBar: Container(
-          decoration: const BoxDecoration(
-            // borderRadius: BorderRadius.only(
-            //   topLeft: Radius.circular(18),
-            //   topRight: Radius.circular(18)
-            // ),
-            color: Color(0xFF41C9C6),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Row(
+        backgroundColor: Colors.black,
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+
+
+        bottomNavigationBar: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                // Device button
-                InkWell(
-                  onTap: () {Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const HealthSection()));},
-                  child: Image.asset("assets/images/health.png",
-                      height: 30, color: const Color(0xFF554E7E)),
-                ),
 
-                // Doctor Button
-                InkWell(
-                  onTap: () {},
-                  child: Image.asset(
-                    "assets/images/bell.png",
-                    height: 30,
-                    color: const Color(0xFF554E7E),
+                // Health Post Button
+                Container(
+                  width: mediaQueryWidth/3,
+                  height: mediaQueryHeight * 0.075,
+                  decoration: BoxDecoration(
+                      color: pageSelected[0] ? Colors.white.withOpacity(0.75) : Colors.black,
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(40)
+                      ),
+                      border: Border.all()
+                  ),
+
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: mediaQueryHeight * 0.01
+                    ),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {
+                          pageSelected[1] = false;
+                          pageSelected[2] = false;
+                          pageSelected[0] = true;
+                        });
+                      },
+                      child: Image.asset("assets/images/health.png",
+                          height: mediaQueryHeight * 0.05),
+                    ),
                   ),
                 ),
 
-                // Setting Button
-                InkWell(
-                  onTap: () {Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const Experience()));},
-                  child: Image.asset(
-                    "assets/images/experience.png",
-                    height: 30,
-                    color: const Color(0xFF554E7E),
+                // Experience Button
+                Container(
+                  width: mediaQueryWidth/3,
+                  height: mediaQueryHeight * 0.075,
+                  decoration: BoxDecoration(
+                      color: pageSelected[1] ? Colors.white.withOpacity(0.75) : Colors.black,
+                      border: Border.all()
+                      // borderRadius: BorderRadius.only(
+                      //     topLeft: Radius.circular(40)
+                      // )
+                  ),
+
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: mediaQueryHeight * 0.01
+                    ),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {
+                          pageSelected[0] = false;
+                          pageSelected[2] = false;
+                          pageSelected[1] = true;
+                        });
+                      },
+                      child: Image.asset("assets/images/experience.png",
+                          height: mediaQueryHeight * 0.05),
+                    ),
                   ),
                 ),
-              ],
-            ),
+
+                // Chat Button
+                Container(
+                  width: mediaQueryWidth/3,
+                  height: mediaQueryHeight * 0.075,
+                  decoration: BoxDecoration(
+                      color: pageSelected[2] ? Colors.white.withOpacity(0.75) : Colors.black,
+                      borderRadius: const BorderRadius.only(
+                          topRight: Radius.circular(40)
+                      ),
+                      border: Border.all()
+                  ),
+
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: mediaQueryHeight * 0.015
+                    ),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {
+                          pageSelected[0] = false;
+                          pageSelected[1] = false;
+                          pageSelected[2] = true;
+                        });
+                      },
+                      child: Image.asset("assets/images/chat.png",
+                          height: mediaQueryHeight * 0.05),
+                    ),
+                  ),
+                ),
+            ]
+
+
           ),
-        ),
-        body: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              StreamBuilder(builder: (context, snapshot) {
-                return Expanded(
-                    child: ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        shrinkWrap: true,
-                        itemCount: posts.length,
-                        itemBuilder: (context, index) {
-                          return SingleChildScrollView(
-                              child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: mediaQueryWidth * 0.02,
-                                      vertical: mediaQueryHeight * 0.02),
-                                  child: Row(
-                                    children: <Widget>[
-                                      Expanded(
-                                        child: Text(posts[index]["Text"]),
-                                      ),
-                                    ],
-                                  )));
-                        }));
-              })
-            ]));
+
+        body: Stack(
+          children: <Widget>[
+            Center(
+              child: Image.asset(
+                "assets/gif/girl_28.gif"
+              ),
+            ),
+            Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  StreamBuilder(builder: (context, snapshot) {
+                    return Expanded(
+                        child: ListView.builder(
+                            scrollDirection: Axis.vertical,
+                            shrinkWrap: true,
+                            itemCount: posts.length,
+                            itemBuilder: (context, index) {
+                              return SingleChildScrollView(
+                                  child: Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: mediaQueryWidth * 0.02,
+                                          vertical: mediaQueryHeight * 0.02),
+                                      child: Row(
+                                        children: <Widget>[
+                                          Expanded(
+                                            child: Text(posts[index]["Text"]),
+                                          ),
+                                        ],
+                                      )));
+                            }));
+                  })
+                ])
+          ],
+        ));
   }
 }

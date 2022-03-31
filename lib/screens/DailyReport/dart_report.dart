@@ -225,7 +225,7 @@ class _DailyReportState extends State<DailyReport> {
                           borderRadius: BorderRadius.circular(30),
                           border: Border.all(
                               color: const Color(0xff8434f2), width: 5),
-                          color: const Color(0xff8434f2).withOpacity(0.6)),
+                          color: const Color(0xff8434f2).withOpacity(0.9)),
                       child: const Text(
                         "Take a quick test",
                         textAlign: TextAlign.center,
