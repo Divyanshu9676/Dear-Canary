@@ -2,7 +2,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:bulleted_list/bulleted_list.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:dear_canary/screens/home.dart';
 
 class AboutPPD extends StatefulWidget {
   const AboutPPD({Key? key}) : super(key: key);

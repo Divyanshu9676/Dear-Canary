@@ -4,6 +4,7 @@ import 'package:dear_canary/screens/InitialQuiz/initial_questioning.dart';
 
 class IntroToInitialQuiz extends StatelessWidget {
   final String mobile;
+  // ignore: use_key_in_widget_constructors
   const IntroToInitialQuiz(this.mobile);
 
   @override

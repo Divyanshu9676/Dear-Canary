@@ -1,18 +1,15 @@
-import 'dart:math';
+import 'package:dear_canary/screens/UserDetailsEntry/user_basic_details_enrty.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:twilio_flutter/twilio_flutter.dart';
-import 'package:dear_canary/models/user_details.dart';
-import 'package:dear_canary/screens/UserDetailsEntry/user_basic_details_enrty.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dear_canary/screens/home.dart';
 // import 'package:tele_doc/widget/otp_verify.dart';
 
 // Enum created for switching between login and otp verify screen
 enum MobileVerificationState {
-  SHOW_MOBILE_FORM_STATE,
-  SHOW_OTP_FORM_STATE,
+  showMobileFormState,
+  showOtpFormState,
 }
 
 class MobileAuth extends StatefulWidget {
@@ -25,7 +22,7 @@ class MobileAuth extends StatefulWidget {
 class _MobileAuthState extends State<MobileAuth> {
   // It will help to switch between login and otp page
   MobileVerificationState currentState =
-      MobileVerificationState.SHOW_MOBILE_FORM_STATE;
+      MobileVerificationState.showMobileFormState;
 
   // For firebase auth
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -134,7 +131,7 @@ class _MobileAuthState extends State<MobileAuth> {
           codeSent: (verificationId, resendingToken) async {
             setState(() {
               showLoading = false;
-              currentState = MobileVerificationState.SHOW_OTP_FORM_STATE;
+              currentState = MobileVerificationState.showOtpFormState;
               this.verificationId = verificationId;
             });
           },
@@ -408,7 +405,7 @@ class _MobileAuthState extends State<MobileAuth> {
                           ),
                         )
                       : currentState ==
-                              MobileVerificationState.SHOW_MOBILE_FORM_STATE
+                              MobileVerificationState.showMobileFormState
                           ? getMobileFormWidget(context)
                           : getOtpFormWidget(context),
                 )

@@ -1,4 +1,3 @@
-import 'package:dear_canary/screens/Community/chat.dart';
 import 'package:dear_canary/screens/Community/health.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

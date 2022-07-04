@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:dear_canary/models/user_details.dart';
-import 'package:dear_canary/screens/UserDetailsEntry/user_remaining_data_entry.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Result extends StatelessWidget {
@@ -11,7 +10,7 @@ class Result extends StatelessWidget {
   final VoidCallback resetHandler;
   final String mobile;
 
-  Result(this.resultScore, this.resetHandler, this.mobile);
+  const Result(this.resultScore, this.resetHandler, this.mobile, {Key? key}) : super(key: key);
 
   //Remark Logic
   String get resultPhrase {

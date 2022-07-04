@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:dear_canary/models/user_details.dart';
 
 class OldDiaryEntry extends StatefulWidget {
   OldDiaryEntry({Key? key}) : super(key: key);
@@ -12,8 +11,8 @@ class OldDiaryEntry extends StatefulWidget {
 
   OldDiaryEntry.diaryEntry(
       this.oldDiaryEntries,
-      this.respectiveDiaryEntryDate
-  );
+      this.respectiveDiaryEntryDate, {Key? key}
+  ) : super(key: key);
 
   @override
   State<OldDiaryEntry> createState() => _OldDiaryEntryState();

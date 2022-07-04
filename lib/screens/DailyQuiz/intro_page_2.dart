@@ -2,7 +2,6 @@ import 'package:dear_canary/screens/DailyQuiz/daily_question.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:dear_canary/screens/InitialQuiz/initial_questioning.dart';
 
 class IntroToDailyQuiz extends StatefulWidget {
   var mobile;

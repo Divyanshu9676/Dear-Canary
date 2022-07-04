@@ -1,4 +1,3 @@
-import 'package:dear_canary/screens/DailyQuiz/intro_page_2.dart';
 import 'package:dear_canary/screens/DailyReport/dart_report.dart';
 import 'package:dear_canary/screens/UserProfile/profile.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +6,6 @@ import 'package:dear_canary/screens/AboutPPD/about_ppd.dart';
 import 'package:dear_canary/screens/AboutUs/about_us.dart';
 import 'package:dear_canary/screens/Appointment/appointment.dart';
 import 'package:dear_canary/screens/Community/community.dart';
-import 'package:dear_canary/screens/ConfidenceBooster/confidence_booster.dart';
 import 'package:dear_canary/screens/Diary/diary.dart';
 import 'package:dear_canary/screens/Notifications/notifications.dart';
 import 'package:dear_canary/screens/Settings/settings.dart';

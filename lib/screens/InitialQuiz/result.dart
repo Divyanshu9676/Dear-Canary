@@ -9,7 +9,7 @@ class Result extends StatelessWidget {
   final String mobile;
   final VoidCallback resetHandler;
 
-  Result(this.resultScore, this.resetHandler, this.mobile);
+  const Result(this.resultScore, this.resetHandler, this.mobile, {Key? key}) : super(key: key);
 
   //Remark Logic
   String get resultPhrase {

@@ -1,4 +1,3 @@
-import 'package:dear_canary/screens/ConfidenceBooster/confidence_booster.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -51,7 +50,7 @@ class _CommunityHealthState extends State<CommunityHealth> {
   @override
   Widget build(BuildContext context) {
     final mediaQueryHeight = MediaQuery.of(context).size.height;
-    final mediaQueryWidth = MediaQuery.of(context).size.width;
+    // final mediaQueryWidth = MediaQuery.of(context).size.width;
 
     return SafeArea(
         child: Stack(children: <Widget>[
