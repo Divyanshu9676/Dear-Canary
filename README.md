@@ -18,8 +18,6 @@
   <p align="center">
     An Application for solving the problem of Postmartum Depression.
     <br />
-    This is a Submission Project for :  
-    <a href="https://developers.google.com/community/gdsc-solution-challenge/ target="_blank"">Google Solution Challange</a>
     <br />
     <br />
     <!-- <a href="https://drive.google.com/file/d/1zbN4qylBrzryQmhiNH4WLDuymoOklK8O/view?usp=sharing target="_blank""><strong>Download the App</strong></a> -->
